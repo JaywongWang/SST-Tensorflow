@@ -39,6 +39,9 @@ Follow the script *eval.py* to evaluate your proposal predictions.
 My implemented results can be found in *results/1*. They are comparable or even better than the reported ones.
 
 ### Dependencies
+
 tensorflow==1.0.1
+
 python==2.7.5
+
 Other visions may also work, but not guaranteed.
