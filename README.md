@@ -20,7 +20,7 @@ After that, please generate anchor weights (for handling imbalance class problem
 
 ### Hyper Parameters
 
-I give the best options (from my experiments) in *opt.py*, including model configuration, training options, and testing options.
+I provide the best configuration (from my experiments) in *opt.py*, including model setup, training options, and testing options.
 
 ### Training
 
