@@ -64,3 +64,7 @@ tensorflow==1.0.1
 python==2.7.5
 
 Other versions may also work.
+
+### Acknowledgements
+
+Great thanks to Shyamal Buch for really helpful discussion.
