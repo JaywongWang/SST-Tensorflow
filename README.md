@@ -38,6 +38,21 @@ Follow the script *eval.py* to evaluate your proposal predictions.
 
 My implemented results can be found in *results/1*. They are comparable or even better than the reported ones.
 
+<table>
+  <tr>
+    <th>Method</th>
+    <th>Recall@1000 at tIoU=0.8</th>
+  </tr>
+  <tr>
+    <th>SST (paper)</th>
+    <th>0.672</th>
+  </tr>
+  <tr>
+    <th>SST (my impl)</th>
+    <th>0.696</th>
+  </tr>
+</table>
+
 ### Dependencies
 
 tensorflow==1.0.1
