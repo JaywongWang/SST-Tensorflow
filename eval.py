@@ -228,7 +228,7 @@ def average_recall_vs_nr_proposals(proposals, ground_truth,
 
 options = default_options()
 split = 'test'
-result_filename = 'results/predict_1000_proposals.json'
+result_filename = 'results/1/predict_proposals.json'
 results = json.load(open(result_filename, 'r'))['results']
 #ground_truth_filename = options['proposal_data_path']+'/thumos14_temporal_proposal_%s.json'%split
 ground_truth_filename = 'dataset/thumos14/gt_proposals/thumos14_temporal_proposal_%s.json'%split
@@ -236,7 +236,7 @@ ground_truth = json.load(open(ground_truth_filename, 'r'))
 recalls_avg, proposals_per_video = average_recall_vs_nr_proposals(results, ground_truth, np.array(options['tiou_measure']))
 recalls_tiou, tiou_thresholds = recall_vs_tiou_thresholds(results, ground_truth)
 
-fid = h5py.File('results/recall_prop.hdf5', 'w')
+fid = h5py.File('results/1/recall_prop.hdf5', 'w')
 
 fid.create_group('recall').create_dataset('recall', data=recalls_avg)
 fid.create_group('proposals_per_video').create_dataset('proposal', data=proposals_per_video)
