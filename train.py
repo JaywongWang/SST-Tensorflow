@@ -101,7 +101,7 @@ def train(options):
         train_op = optimizer.apply_gradients(clip_grad_var)
 
     # save summary data
-    train_summary_writer = tf.summary.FileWriter(ooptions['ckpt_prefix'], sess.graph)
+    train_summary_writer = tf.summary.FileWriter(options['ckpt_prefix'], sess.graph)
 
     # initialize all variables
     tf.global_variables_initializer().run()
