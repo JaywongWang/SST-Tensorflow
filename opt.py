@@ -1,7 +1,7 @@
 """
 Default hyper parameters
 
-Use this setting can obtain similar performance as original SST paper, even better
+Use this setting can obtain similar or even better performance as original SST paper
 """
 
 from collections import OrderedDict
