@@ -63,4 +63,4 @@ tensorflow==1.0.1
 
 python==2.7.5
 
-Other versions may also work, but not guaranteed.
+Other versions may also work.
