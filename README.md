@@ -13,7 +13,7 @@ Extract C3D features for the 412 videos (212 *val* videos + 200 *test* videos, I
 
 I use *fc6* features in my experiment.
 
-Please follow script *dataset/thumos14/prepare_gt_proposal_data.py* to generate ground-truth proposal data for train/val/test split.
+Please follow the script *dataset/thumos14/prepare_gt_proposal_data.py* to generate ground-truth proposal data for train/val/test split.
 
 After that, please generate anchor weights (for handling imbalance class problem) by uniformly sampling video streams (follow *dataset/thumos14/anchors/get_anchor_weight.py*) or just use my pre-calculated weights (*weights.json*).
 
@@ -24,7 +24,7 @@ I give the best options (from my experiments) in *opt.py*, including model confi
 
 ### Training
 
-Train your model using the script *train.py*.
+Train your model using the script *train.py*. Run around 50 epochs and pick the best checkpoint (with the smallest val loss) for prediction.
 
 ### Prediction
 
