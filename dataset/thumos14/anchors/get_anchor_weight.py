@@ -58,9 +58,16 @@ sample_num = 100     # sampling number for a video
 print('Anchors are: (in frames)')
 print(anchors)
 
+# count matched samples for each anchor
 count_anchors = [0 for _ in range(n_anchors)]
-sum_video_length = 0
+
+# total sampled length
+sum_sample_length = 0
+
+# weighting positive/negative classes for each anchor
 weights = [[0., 0.] for _ in range(n_anchors)]
+
+# output path to save calculated weights
 out_weight_path = 'weights.json'
 
 print('Get anchor weights ...')
@@ -69,7 +76,7 @@ split = 'train'
 split_data = json.load(open(os.path.join(proposal_source, 'thumos14_temporal_proposal_%s.json'%split)))
 video_ids = split_data.keys()
 
-
+# loop over all training videos
 for index, vid in enumerate(video_ids):
     print('Processing video id: %s'%vid)
     data = split_data[vid]
@@ -87,11 +94,13 @@ for index, vid in enumerate(video_ids):
         start_frame_id = start_feat_id * c3d_resolution + c3d_resolution / 2
         end_frame_id = (end_feat_id - 1) * c3d_resolution + c3d_resolution / 2
 
-        sum_video_length += this_sample_len
+        sum_sample_length += this_sample_len
 
         for stamp_id, stamp in enumerate(framestamps):
             start = stamp[0]
             end = stamp[1]
+            
+            # calculate corresponding starting/ending feature ids (where proposal ends) that possibly cover a ground-truth proposal
             start_point = max((start + end) / 2, 0)
             end_point = end + (end - start + 1)
             frame_check_start, frame_check_end = get_intersection((start_point, end_point + 1), (start_frame_id, end_frame_id+1))
@@ -113,7 +122,7 @@ for index, vid in enumerate(video_ids):
 
 for i in range(n_anchors):
     # weight for negative label
-    weights[i][1] = count_anchors[i] / float(sum_video_length)
+    weights[i][1] = count_anchors[i] / float(sum_sample_length)
     # weight for positive label
     weights[i][0] = 1. - weights[i][1]
 
