@@ -1,6 +1,6 @@
 # SST-Tensorflow
 
-Tensorflow Implementation of the Paper [SST: Single-Stream Temporal Action Proposals](http://vision.stanford.edu/pdf/buch2017cvpr.pdf) in *CVPR* 2017.
+Tensorflow Implementation of the Paper [SST: Single-Stream Temporal Action Proposals](http://vision.stanford.edu/pdf/buch2017cvpr.pdf) by Shyamal Buch *et al.* in *CVPR* 2017.
 
 
 ### Data Preparation
