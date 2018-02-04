@@ -5,13 +5,11 @@ Tensorflow Implementation of the Paper [SST: Single-Stream Temporal Action Propo
 
 ### Data Preparation
 
-I run experiments on *THUMOS14* dataset.
-
 Please download video data and annotation data from the website [THUMOS14](http://crcv.ucf.edu/THUMOS14/download.html).
 
 Extract C3D features for non-overlap 16-frame snippets from the 412 videos (212 *val* videos + 200 *test* videos, I found one *val* video missing) for the task of temporal action proposals. Put them in *dataset/thumos14/features/*.
 
-I use *fc6* features in my experiment.
+*fc6* features are used in my experiment.
 
 Please follow the script *dataset/thumos14/prepare_gt_proposal_data.py* to generate ground-truth proposal data for train/val/test split.
 
@@ -20,7 +18,7 @@ After that, please generate anchor weights (for handling imbalance class problem
 
 ### Hyper Parameters
 
-I provide the best configuration (from my experiments) in *opt.py*, including model setup, training options, and testing options.
+The best configuration (from my experiments) is given in *opt.py*, including model setup, training options, and testing options.
 
 ### Training
 
