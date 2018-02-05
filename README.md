@@ -34,7 +34,7 @@ Follow the script *eval.py* to evaluate your proposal predictions.
 
 ### Results
 
-My implemented results can be found in *results/1*. They are comparable or even better than the reported ones.
+My implemented results can be found in *results/1*. They are slightly better than the reported ones.
 
 <table>
   <tr>
