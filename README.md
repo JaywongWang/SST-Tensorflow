@@ -11,7 +11,7 @@ Extract C3D features for non-overlap 16-frame snippets from the 412 videos (200 
 
 *fc6* features are used in my experiment.
 
-Please follow the script *dataset/thumos14/prepare_gt_proposal_data.py* to generate ground-truth proposal data for train/val/test split.
+Please follow the script *dataset/thumos14/prepare_gt_proposal_data.py* to generate ground-truth proposal data for train/val/test split. I already put the generated files in *dataset/thumos14/gt_proposals/*.
 
 After that, please generate anchor weights (for handling imbalance class problem) by uniformly sampling video streams (follow *dataset/thumos14/anchors/get_anchor_weight.py*) or just use my pre-calculated weights (*weights.json*).
 
