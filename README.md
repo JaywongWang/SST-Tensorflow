@@ -5,7 +5,7 @@ Tensorflow Implementation of the Paper [SST: Single-Stream Temporal Action Propo
 
 ### Data Preparation
 
-Please download video data and annotation data from the website [THUMOS14](http://crcv.ucf.edu/THUMOS14/download.html). Extract C3D features for non-overlap 16-frame snippets from the 412 videos (200 *val* videos + 212 *test* videos, I found one *test* video missing) for the task of temporal action proposals. Alternatively, you may download my provided [C3D features](https://pan.baidu.com/s/1ggMHZ71), and put them in *dataset/thumos14/features/*.
+Please download video data and annotation data from the website [THUMOS14](http://crcv.ucf.edu/THUMOS14/download.html). Extract C3D features for non-overlap 16-frame snippets from the 412 videos (200 *val* videos + 212 *test* videos, I found one *test* video missing) for the task of temporal action proposals. Alternatively, you may download my provided [C3D features](https://pan.baidu.com/s/1ggMHZ71), and put them in *dataset/thumos14/features/*. If you are interested in the feature extraction, I refer you to this [code](https://github.com/yyuanad/Pytorch_C3D_Feature_Extractor).
 
 *fc6* features are used in my experiment.
 
