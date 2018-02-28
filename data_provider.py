@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
 """
-Data provider: to provide train/val data to the model
+Data provider: to provide train/val/test data to the model
 """
 import random
 import numpy as np
