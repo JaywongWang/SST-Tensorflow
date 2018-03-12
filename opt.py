@@ -41,7 +41,7 @@ def default_options():
     options['eval_batch_size'] = 40  # evaluation (loss) batch size
     options['learning_rate'] = 1e-3  # initial learning rate (I fix learning rate to 1e-3 during training phase)
     options['reg'] = 1e-5            # regularization strength (control L2 regularization ratio)
-    options['init_scale'] = 0.08     # the init scale for uniform
+    options['init_scale'] = 0.08     # the init scale for uniform distribution
     options['max_epochs'] = 100    # maximum training epochs to run
     options['init_epoch'] = 0        # initial epoch (useful when you needs to continue from some checkpoints)
     options['n_eval_per_epoch'] = 0.1 # number of evaluations per epoch
