@@ -41,7 +41,7 @@ def default_options():
     options['eval_batch_size'] = 40  # evaluation (loss) batch size
     options['learning_rate'] = 1e-3  # initial learning rate (I fix learning rate to 1e-3 during training phase)
     options['reg'] = 1e-5            # regularization strength (control L2 regularization ratio)
-    options['init_scale'] = 0.08     # the init scale for uniform, here for initializing word embedding matrix
+    options['init_scale'] = 0.08     # the init scale for uniform
     options['max_epochs'] = 100    # maximum training epochs to run
     options['init_epoch'] = 0        # initial epoch (useful when you needs to continue from some checkpoints)
     options['n_eval_per_epoch'] = 0.1 # number of evaluations per epoch
@@ -58,7 +58,7 @@ def default_options():
     options['proposal_score_threshold'] = 0.2  # score threshold to select proposals
     options['nms_threshold'] = 0.8             # threshold for non-maximum suppression
     options['out_json_file']= 'results/%d/predict_proposals.json'%options['train_id'] # output json file to save prediction results
-    options['tiou_measure'] = np.linspace(0.5, 1.0, 11)  # tIoU thresholds for calculating recall
+    options['tiou_measure'] = list(np.linspace(0.5, 1.0, 11))  # tIoU thresholds for calculating recall
     #options['tiou_measure'] = [0.8]
     
     if not os.path.exists(options['ckpt_prefix']):
