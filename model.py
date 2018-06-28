@@ -31,23 +31,26 @@ class ProposalModel(object):
         batch_size = tf.shape(video_feat)[0]
         
         # set rnn type
-        if self.options['rnn_type'] == 'lstm':
-            rnn_cell_video = tf.contrib.rnn.LSTMCell(
-                num_units=self.options['rnn_size'],
-                state_is_tuple=True, 
-                initializer=tf.orthogonal_initializer()
-            )
-        elif self.options['rnn_type'] == 'gru':
-            rnn_cell_video = tf.contrib.rnn.GRUCell(
-                num_units=self.options['rnn_size']
-            )
-        else:
-            raise ValueError('Unsupported RNN type.')
+        def get_rnn_cell():
+            if self.options['rnn_type'] == 'lstm':
+                rnn_cell_video = tf.contrib.rnn.LSTMCell(
+                    num_units=self.options['rnn_size'],
+                    state_is_tuple=True, 
+                    initializer=tf.orthogonal_initializer()
+                )
+            elif self.options['rnn_type'] == 'gru':
+                rnn_cell_video = tf.contrib.rnn.GRUCell(
+                    num_units=self.options['rnn_size']
+                )
+            else:
+                raise ValueError('Unsupported RNN type.')
+            
+            return rnn_cell_video
         
         if self.options['rnn_type'] == 'lstm':
-            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([rnn_cell_video]*self.options['num_rnn_layers'], state_is_tuple=True)
+            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([get_rnn_cell() for _ in range(self.options['num_rnn_layers'])], state_is_tuple=True)
         elif self.options['rnn_type'] == 'gru':
-            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([rnn_cell_video]*self.options['num_rnn_layers'])
+            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([get_rnn_cell() for _ in range(self.options['num_rnn_layers'])])
         else:
             raise ValueError('Unsupported RNN type.')
 
@@ -110,20 +113,6 @@ class ProposalModel(object):
         # get batch size, which is a scalar tensor
         batch_size = tf.shape(video_feat)[0]
         
-        # set rnn type
-        if self.options['rnn_type'] == 'lstm':
-            rnn_cell_video = tf.contrib.rnn.LSTMCell(
-                num_units=self.options['rnn_size'],
-                state_is_tuple=True, 
-                initializer=tf.orthogonal_initializer()
-            )
-        elif self.options['rnn_type'] == 'gru':
-            rnn_cell_video = tf.contrib.rnn.GRUCell(
-                num_units=self.options['rnn_size']
-            )
-        else:
-            raise ValueError('Unsupported RNN type.')
-
         if self.options['rnn_drop'] > 0:
             print('using dropout in rnn!')
         
@@ -131,16 +120,31 @@ class ProposalModel(object):
         rnn_drop = tf.placeholder(tf.float32)
         inputs['rnn_drop'] = rnn_drop
         
-        rnn_cell_video = tf.contrib.rnn.DropoutWrapper(
-            rnn_cell_video,
-            input_keep_prob=1.0 - rnn_drop,
-            output_keep_prob=1.0 - rnn_drop 
-        )
-        
+        def get_rnn_cell():
+            if self.options['rnn_type'] == 'lstm':
+                rnn_cell_video = tf.contrib.rnn.LSTMCell(
+                    num_units=self.options['rnn_size'],
+                    state_is_tuple=True, 
+                    initializer=tf.orthogonal_initializer()
+                )
+            elif self.options['rnn_type'] == 'gru':
+                rnn_cell_video = tf.contrib.rnn.GRUCell(
+                    num_units=self.options['rnn_size']
+                )
+            else:
+                raise ValueError('Unsupported RNN type.')
+            
+            rnn_cell_video = tf.contrib.rnn.DropoutWrapper(
+                rnn_cell_video,
+                input_keep_prob=1.0 - rnn_drop,
+                output_keep_prob=1.0 - rnn_drop
+            )
+            return rnn_cell_video
+
         if self.options['rnn_type'] == 'lstm':
-            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([rnn_cell_video]*self.options['num_rnn_layers'], state_is_tuple=True)
+            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([get_rnn_cell() for _ in range(self.options['num_rnn_layers'])], state_is_tuple=True)
         elif self.options['rnn_type'] == 'gru':
-            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([rnn_cell_video]*self.options['num_rnn_layers'])
+            multi_rnn_cell_video = tf.contrib.rnn.MultiRNNCell([get_rnn_cell() for _ in range(self.options['num_rnn_layers'])])
         else:
             raise ValueError('Unsupported RNN type.')
 
