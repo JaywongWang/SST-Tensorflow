@@ -34,7 +34,7 @@ Follow the script eval.py to evaluate your proposal predictions.
 
 You may download my trained model [here](https://pan.baidu.com/s/1mjBI2Nm). Please put them in checkpoints/. Change the file init_from in opt.py and run test.py !
 
-**Update:** The predicted action proposals for the test set can be found [here](https://pan.baidu.com/s/1nwa2VLv). The result figures are put in results/1. They are slightly better than the reported ones.
+**Update:** The predicted action proposals for the test set can be found in [Google Drive](https://drive.google.com/open?id=16D2Bzv7X1R-grxCmMY0crN3bFo5ylit4) or [Baidu Drive](https://pan.baidu.com/s/1nwa2VLv). The result figures are put in results/1. They are slightly better than the reported ones.
 
 <table>
   <tr>
